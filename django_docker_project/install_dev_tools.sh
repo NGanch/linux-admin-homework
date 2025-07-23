@@ -8,7 +8,7 @@ echo -e "${GREEN}Починаємо встановлення DevOps-інстру
 
 # Оновлення системи
 sudo apt update -y && sudo apt upgrade -y
-
+    
 # Встановлення Docker
 if ! command -v docker &> /dev/null; then
     echo -e "${GREEN}Встановлюємо Docker...${NC}"
