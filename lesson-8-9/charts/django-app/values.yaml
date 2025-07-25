@@ -1,0 +1,44 @@
+image:
+  repository: 885545924441.dkr.ecr.eu-north-1.amazonaws.com/lesson-5-ecr
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  port: 80
+
+env:
+  DEBUG: "False"
+  SECRET_KEY: "your-secret-key"
+  ALLOWED_HOSTS: "*"
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 6
+  targetCPUUtilizationPercentage: 70
+
+ingress:
+  enabled: false
+  className: nginx
+  host: yourdomain.com
+  tls: true
+
+# image:
+#   repository: 804054839611.dkr.ecr.eu-central-1.amazonaws.com/django
+#   tag: v1.0.5
+#   pullPolicy: IfNotPresent
+
+# service:
+#   type: ClusterIP
+#   port: 80
+
+# ingress:
+#   enabled: false
+
+# config:
+#   POSTGRES_PORT: 5432
+#   POSTGRES_HOST: db
+#   POSTGRES_USER: django_user
+#   POSTGRES_DB: django_db
+#   POSTGRES_PASSWORD: pass9764gd
