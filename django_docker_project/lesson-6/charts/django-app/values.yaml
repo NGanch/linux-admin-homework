@@ -1,0 +1,25 @@
+image:
+  repository: 885545924441.dkr.ecr.eu-north-1.amazonaws.com/lesson-5-ecr
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  port: 80
+
+env:
+  DEBUG: "False"
+  SECRET_KEY: "your-secret-key"
+  ALLOWED_HOSTS: "*"
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 6
+  targetCPUUtilizationPercentage: 70
+
+ingress:
+  enabled: false
+  className: nginx
+  host: yourdomain.com
+  tls: true
